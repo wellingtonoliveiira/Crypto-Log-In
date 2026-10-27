@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureLogin | Painel</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="card">
+
+            <div class="logo">S</div>
+
+            <h1>Login realizado!</h1>
+
+            <p class="subtitle">
+                Olá, {{ nome }}! Seja bem-vindo(a) ao SecureLogin.
+            </p>
+
+            <div class="success">
+                Sua autenticação foi validada pelo sistema.
+                Você entrou na sua conta com sucesso.
+            </div>
+
+            <form method="POST" action="{{ url_for('sair') }}">
+                <button type="submit">Sair da conta</button>
+            </form>
+
+            <p class="security">
+                🔒 SecureLogin — acesso protegido
+            </p>
+
+        </section>
+    </main>
+</body>
+</html>
