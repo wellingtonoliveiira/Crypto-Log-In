@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I9Lar | Entrar</title>
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/webLogo.png') }}" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/style.css') }}"
+    />
+  </head>
+  <body>
+    <main class="page">
+      <!-- Lado esquerdo: marca e frase -->
+      <section class="hero">
+        <img
+          class="hero-logo"
+          src="{{ url_for('static', filename='assets/images/logo.jpeg') }}"
+          alt="I9Lar - Fábrica de mesas de bilhar"
+        />
+
+        <h2 class="hero-title">
+          Jogue grandes<br />
+          <span>momentos.</span>
+        </h2>
+        <p class="hero-text">
+          Qualidade, design e diversão em<br />
+          cada partida. Seja bem-vindo!
+        </p>
+      </section>
+
+      <!-- Lado direito: card de login -->
+      <section class="side">
+        <div class="card">
+          <svg
+            class="card-icon"
+            viewBox="0 0 48 48"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 4 L38 44" />
+            <path d="M42 4 L10 44" />
+            <circle cx="24" cy="36" r="1.6" fill="currentColor" />
+            <circle cx="20" cy="40" r="1.6" fill="currentColor" />
+            <circle cx="28" cy="40" r="1.6" fill="currentColor" />
+          </svg>
+
+          <h1>Acesse sua <span>conta</span></h1>
+          <p class="subtitle">
+            Faça login para continuar e aproveitar<br />
+            todos os recursos da I9Lar.
+          </p>
+
+          {% with mensagens = get_flashed_messages() %} {% if mensagens %} {%
+          for mensagem in mensagens %}
+          <div class="mensagem" role="alert">{{ mensagem }}</div>
+          {% endfor %} {% endif %} {% endwith %}
+
+          <form method="POST" action="{{ url_for('login') }}">
+            <div class="field">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
+              </svg>
+              <label for="email" class="sr-only">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="E-mail"
+                autocomplete="email"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="5" y="11" width="14" height="9" rx="2" />
+                <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+              </svg>
+              <label for="senha" class="sr-only">Senha</label>
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Senha"
+                autocomplete="current-password"
+                required
+              />
+              <button
+                type="button"
+                class="toggle"
+                id="toggle-senha"
+                aria-label="Mostrar senha"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="row">
+              <label class="check">
+                <input type="checkbox" name="lembrar" checked />
+                <span class="box"></span>
+                Lembrar de mim
+              </label>
+              <!-- Troque o "#" pela rota de recuperação quando ela existir:
+                              -->
+              <a href="{{ url_for('login') }}" class="link">Esqueceu sua senha?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Entrar
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </button>
+          </form>
+
+          <div class="divider"><span>Ainda não tem uma conta?</span></div>
+
+          <a href="{{ url_for('cadastro') }}" class="btn btn-outline">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="9" cy="8" r="4" />
+              <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+              <path d="M19 8v6M16 11h6" />
+            </svg>
+            Criar conta
+          </a>
+        </div>
+
+        <ul class="badges">
+          <li>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" />
+              <path d="M8.5 12l2.5 2.5 4.5-5" />
+            </svg>
+            <span>Compra<br />segura</span>
+          </li>
+          <li>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M2 6h12v10H2zM14 9h4l4 3v4h-8z" />
+              <circle cx="7" cy="18" r="2" />
+              <circle cx="17" cy="18" r="2" />
+            </svg>
+            <span>Entrega para<br />todo o Brasil</span>
+          </li>
+          <li>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3z"
+              />
+            </svg>
+            <span>Qualidade<br />garantida</span>
+          </li>
+        </ul>
+      </section>
+
+      <footer class="page-footer">
+        <span class="footer-brand"
+          >I9Lar <i></i> Fábrica de mesas de bilhar</span
+        >
+        <span class="footer-tag"
+          >Mais que um jogo,<br />um estilo de vida.</span
+        >
+      </footer>
+    </main>
+
+    <script>
+      // Mostrar / ocultar senha
+      const botao = document.getElementById("toggle-senha");
+      const campo = document.getElementById("senha");
+      botao.addEventListener("click", () => {
+        const mostrando = campo.type === "text";
+        campo.type = mostrando ? "password" : "text";
+        botao.setAttribute(
+          "aria-label",
+          mostrando ? "Mostrar senha" : "Ocultar senha",
+        );
+      });
+    </script>
+  </body>
+</html>
