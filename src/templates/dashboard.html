@@ -1,40 +1,66 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecureLogin | Painel</title>
+    <title>I9Lar | Dashboard</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='../styles/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
 <body>
-    <main class="container">
-        <section class="card">
+    <main class="page-center">
 
-            <div class="logo">S</div>
+        <img
+            class="hero-logo"
+            src="{{ url_for('static', filename='assets/images/logo.jpeg') }}"
+            alt="I9Lar - Fábrica de mesas de bilhar"
+        >
 
-            <h1>Login realizado!</h1>
+        <section class="card card-welcome">
+
+            <span class="status">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M8 12.5l2.7 2.7L16 9.5"/>
+                </svg>
+                Login realizado
+            </span>
+
+            <h1>Olá, <span>{{ nome }}</span>!</h1>
+
+            <p class="welcome-lead">Seja bem-vindo à I9Lar.</p>
 
             <p class="subtitle">
-                Olá, {{ nome }}! Seja bem-vindo(a) ao SecureLogin.
+                Sua autenticação foi validada pelo sistema através de
+                criptografia de cifra de César e você entrou na sua conta com sucesso.
             </p>
 
-            <div class="success">
-                Sua autenticação foi validada pelo sistema.
-                Você entrou na sua conta com sucesso.
-            </div>
-
-            <form method="POST" action="{{ url_for('sair') }}">
-                <button type="submit">Sair da conta</button>
-            </form>
-
-            <p class="security">
-                🔒 SecureLogin — acesso protegido
-            </p>
-
+            <a href="{{ url_for('sair') }}" class="btn btn-outline btn-sair">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/>
+                    <path d="M14 8l4 4-4 4M18 12H8"/>
+                </svg>
+                Sair da conta
+            </a>
         </section>
+
+        <p class="secure-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="5" y="11" width="14" height="9" rx="2"/>
+                <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+            </svg>
+            <span><strong>SecureLogin</strong> · Seu acesso protegido.</span>
+        </p>
+
+        <footer class="page-footer page-footer-center">
+            <span class="footer-brand">I9Lar <i></i> Fábrica de mesas de bilhar</span>
+        </footer>
     </main>
 </body>
 </html>

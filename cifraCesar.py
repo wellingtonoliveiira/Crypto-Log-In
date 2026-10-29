@@ -24,17 +24,3 @@ def cifraCesar (senha, chave):
 
 def withoutCifraCesar(senha, chave):
     return cifraCesar(senha, -chave)
-
-# test for terminal, not for the raw code
-
-senha = "SaraWelleGi2026"
-chave = 3
-
-senha_cifrada = cifraCesar(senha, chave)
-senha_original = withoutCifraCesar(senha_cifrada, chave)
-
-print("Original:", senha)
-print("Cifrada:", senha_cifrada)
-print("Decifrada:", senha_original)
-
-assert senha_original == senha
